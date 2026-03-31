@@ -1,71 +1,76 @@
-# Welcome to My Digital Workshop
+# Jeshwin William James
 
-I'm **Jeshwin William James**, a Software Engineer with 3+ years of experience building scalable distributed systems, event-driven microservices, and cloud-native applications using Java, Spring Boot, and Kafka.
+Software Engineer with 3+ years of experience building scalable distributed systems, event-driven microservices, and cloud-native backend applications.  
+Specialized in Java, Spring Boot, Kafka, and high-throughput system design.
 
-Currently working on high-throughput backend systems, real-time processing pipelines, and microservices deployed on AWS & GCP.
-
----
-
-## 🚀 What I Do
-
-I specialize in building:
-
-• Low-latency backend systems  
-• Event-driven microservices (Kafka)  
-• Distributed systems & data pipelines  
-• Cloud-native applications (AWS / GCP)  
-• High-traffic REST & gRPC services  
-• Scalable microservices using Spring Boot  
+Currently focused on building low-latency services, event-driven architectures, and microservices deployed on AWS & Kubernetes.
 
 ---
 
-## 🛠 Tech Stack
+## 🧠 Areas of Interest
 
-**Backend**
-Java • Spring Boot • Microservices • REST • gRPC
-
-**Frontend**
-React.js • Next.js • Tailwind • Redux
-
-**Streaming & Messaging**
-Apache Kafka • JMS • Event-Driven Architecture
-
-**Databases**
-PostgreSQL • MySQL • Cassandra • Redis
-
-**Cloud & DevOps**
-AWS • GCP • Docker • Kubernetes • Jenkins • CI/CD
-
-**Observability**
-Prometheus • Grafana • ELK Stack
+- Distributed Systems
+- System Design
+- Event-Driven Architecture
+- High-Throughput Backend Services
+- Microservices Architecture
+- Cloud-Native Applications
+- Performance Optimization
 
 ---
 
-## 💼 Professional Experience
+## ⚙️ Tech Stack
+
+**Languages**  
+Java • Python • JavaScript • SQL  
+
+**Backend**  
+Spring Boot • Microservices • REST • gRPC • Hibernate  
+
+**Distributed Systems**  
+Apache Kafka • Event Streaming • Async Processing  
+
+**Databases**  
+PostgreSQL • MySQL • Cassandra • Redis  
+
+**Cloud & DevOps**  
+AWS • GCP • Docker • Kubernetes • CI/CD • Jenkins  
+
+**Observability**  
+Prometheus • Grafana • ELK Stack  
+
+---
+
+## 💼 Experience
 
 **Software Engineer — State Street (USA)**  
-Building low-latency financial transaction microservices and event-driven reconciliation pipelines using Kafka, Spring Boot and AWS.
+- Built low-latency Spring Boot microservices for financial transaction processing  
+- Designed event-driven reconciliation pipelines using Kafka  
+- Optimized database queries and improved system throughput  
+- Deployed containerized services using Docker & Kubernetes  
 
-**Software Engineer — Accenture (Flipkart)**  
-Developed high-traffic checkout systems, payment processing services, and scalable microservices handling millions of users.
+**Software Engineer — Accenture (Client- Flipkart)**  
+- Developed high-traffic checkout microservices used by millions of users  
+- Implemented Kafka-based asynchronous processing pipelines  
+- Improved payment success rate and reduced API latency  
+- Built scalable microservices architecture on cloud infrastructure  
 
 ---
 
-## 📌 Featured Projects
+## 🚀 Projects
 
 ### Distributed Event Processing System
-Java • Spring Boot • Kafka • Docker  
-Scalable backend system for processing real-time distributed events.
+Scalable microservices-based backend system using Kafka and Spring Boot for real-time event processing.
 
 ### Mobile Payment Security System
-Device authentication using IMEI verification for secure mobile payments.
+Device authentication framework using IMEI verification for secure mobile payments.
 
 ---
 
 ## 🎓 Education
 
-MS Computer Science — Oklahoma City University  
-B.Tech Computer Science — Hindustan University  
+MS in Computer Science — Oklahoma City University  
+B.Tech in Computer Science — Hindustan University  
 
 ---
 
@@ -75,12 +80,11 @@ AWS Certified Solutions Architect – Associate
 
 ---
 
-## 📫 Connect With Me
+## 📫 Contact
 
 Email: jeshwin.w.james@gmail.com  
-GitHub: https://github.com/jeshwinwilliam  
-LinkedIn: https://www.linkedin.com/in/jeshwin-william-james-33a83b1a9/
+GitHub: https://github.com/jeshwinwilliam
 
 ---
 
-> Building scalable systems, distributed architectures, and cloud-native applications.
+Focused on building scalable infrastructure, distributed systems, and production-grade backend services.
