@@ -21,35 +21,37 @@ Currently focused on building low-latency services, event-driven architectures, 
 
 ## ⚙️ Tech Stack
 
-**Languages**  
-Java • Python • JavaScript • SQL  
+### Languages
+Java • Python • JavaScript • SQL
 
-**Backend**  
-Spring Boot • Microservices • REST • gRPC • Hibernate  
+### Backend
+Spring Boot • Microservices • REST • gRPC • Hibernate
 
-**Distributed Systems**  
-Apache Kafka • Event Streaming • Async Processing  
+### Distributed Systems
+Apache Kafka • Event Streaming • Async Processing
 
-**Databases**  
-PostgreSQL • MySQL • Cassandra • Redis  
+### Databases
+PostgreSQL • MySQL • Cassandra • Redis
 
-**Cloud & DevOps**  
-AWS • GCP • Docker • Kubernetes • CI/CD • Jenkins  
+### Cloud & DevOps
+AWS • GCP • Docker • Kubernetes • CI/CD • Jenkins
 
-**Observability**  
-Prometheus • Grafana • ELK Stack  
+### Observability
+Prometheus • Grafana • ELK Stack
 
 ---
 
 ## 💼 Experience
 
-**Software Engineer — State Street (USA)**  
+### Software Engineer — State Street (USA)
+
 - Built low-latency Spring Boot microservices for financial transaction processing  
 - Designed event-driven reconciliation pipelines using Kafka  
 - Optimized database queries and improved system throughput  
 - Deployed containerized services using Docker & Kubernetes  
 
-**Software Engineer — Accenture (Client- Flipkart)**  
+### Software Engineer — Accenture (Client: Flipkart)
+
 - Developed high-traffic checkout microservices used by millions of users  
 - Implemented Kafka-based asynchronous processing pipelines  
 - Improved payment success rate and reduced API latency  
@@ -83,7 +85,8 @@ AWS Certified Solutions Architect – Associate
 ## 📫 Contact
 
 Email: jeshwin.w.james@gmail.com  
-GitHub: https://github.com/jeshwinwilliam
+GitHub: https://github.com/jeshwinwilliam 
+Linkedin: https://www.linkedin.com/in/jeshwin-william-james-33a83b1a9/
 
 ---
 
