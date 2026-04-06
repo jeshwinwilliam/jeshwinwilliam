@@ -66,7 +66,7 @@ Prometheus • Grafana • ELK Stack
 
 * Built low-latency Spring Boot microservices for financial transaction processing
 * Designed Kafka-based event-driven reconciliation pipelines
-* Optimized database queries improving throughput
+* Optimized database  queries improving throughput
 * Deployed containerized services using Docker & Kubernetes
 
 ## Software Engineer — Accenture (Client: Flipkart)
