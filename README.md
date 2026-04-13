@@ -155,9 +155,6 @@ LinkedIn: https://www.linkedin.com/in/jeshwin-william-james-33a83b1a9/
 GitHub: https://github.com/jeshwinwilliam
 
 
-Email: jeshwin.w.james@gmail.com  
-GitHub: https://github.com/jeshwinwilliam 
-Linkedin: https://www.linkedin.com/in/jeshwin-william-james-33a83b1a9/
 
 ---
 
