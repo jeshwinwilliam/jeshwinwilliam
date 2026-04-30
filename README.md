@@ -12,7 +12,7 @@ Currently focused on low-latency services, event-driven architectures, and micro
 # 🚀 What I Do
 
 * Build distributed event-driven systems
-* Design scalable microservices architectures
+* Design scalable microservices architectures  
 * Develop high-throughput backend services
 * Optimize performance & reduce latency
 * Deploy cloud-native applications
