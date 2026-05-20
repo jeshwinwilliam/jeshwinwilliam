@@ -5,7 +5,7 @@
 Software Engineer with 3+ years of experience building scalable distributed systems, event-driven microservices, and cloud-native backend applications.
 Specialized in Java, Spring Boot, Kafka, and high-throughput system design.
 
-Currently focused on low-latency services, event-driven architectures, and microservices deployed on AWS & Kubernetes.
+Currently focused on low-latency services, event-driven architectures, and microservices deployed on AWS  &  Kubernetes.
 
 ---
 
