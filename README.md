@@ -138,6 +138,7 @@ Java • Spring Boot • REST • MySQL
 # 🎓 Education
 
 MS in Computer Science — Oklahoma City University
+
 B.Tech in Computer Science — Hindustan University
 
 ---
