@@ -274,6 +274,4 @@ Hindustan Institute of Technology & Science
 ⚡ Focused on building scalable infrastructure, distributed systems, and production-grade backend services.
 </p>
 
-## 🐍 Contribution Snake
 
-![snake gif](https://github.com/jeshwinwilliam/jeshwinwilliam/blob/output/github-contribution-grid-snake.svg)
