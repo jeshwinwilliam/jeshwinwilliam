@@ -54,71 +54,6 @@ Software Engineer with **4+ years** of experience across **distributed systems, 
 
 ---
 
-## 🏗 System Architecture — AI-Assisted Event-Driven Platform
-
-A generalized architecture reflecting the shape of the systems I build: async event backbone feeding both traditional services and an AI-assisted processing layer, with observability wired through everything.
-
-```mermaid
-flowchart TB
-    Client[Client / Webhook Source]
-
-    subgraph Edge["Edge Layer"]
-        LB[Load Balancer]
-        APIGW[API Gateway<br/>Rate Limiting · AuthN]
-    end
-
-    subgraph Services["Service Layer"]
-        Ingest[Ingestion Service]
-        Orchestrator[Workflow Orchestrator]
-        AIWorker[AI-Assisted Analysis Worker<br/>Python]
-        ResultSvc[Result / Review Service]
-    end
-
-    subgraph Messaging["Event Backbone"]
-        Kafka[(Apache Kafka<br/>Partitioned Topics)]
-        DLQ[(Dead Letter Queue)]
-    end
-
-    subgraph Data["Storage"]
-        PG[(PostgreSQL<br/>Review / Order History)]
-        Redis[(Redis<br/>Cache & Idempotency Keys)]
-    end
-
-    subgraph Observability["Observability Stack"]
-        Prometheus[Prometheus]
-        Grafana[Grafana]
-        ELK[ELK Stack]
-    end
-
-    Client --> LB --> APIGW
-    APIGW --> Ingest
-    Ingest -- EventReceived --> Kafka
-    Kafka -- consume --> Orchestrator
-    Orchestrator -- dispatch --> AIWorker
-    AIWorker -- AnalysisComplete --> Kafka
-    Kafka -- consume --> ResultSvc
-    Kafka -. failed events .-> DLQ
-
-    Orchestrator --> Redis
-    ResultSvc --> PG
-
-    Ingest & Orchestrator & AIWorker & ResultSvc --> Prometheus
-    Ingest & Orchestrator & AIWorker & ResultSvc --> ELK
-    Prometheus --> Grafana
-```
-
-**Design decisions worth calling out:**
-
-| Concern | Approach | Why |
-|---|---|---|
-| Service coupling | Kafka as async backbone instead of sync REST chains | Decouples producers/consumers, absorbs bursty webhook/traffic spikes, enables replay |
-| AI worker isolation | Dedicated AI-assisted worker pool, decoupled from ingestion | AI latency variance never blocks core ingestion path |
-| Failure handling | Dead-letter queues + retry topics + idempotency keys | Poison messages don't block partitions; safe to retry without duplicate side-effects |
-| Consistency | Eventual consistency via event choreography, sagas for multi-step transactions | Avoids distributed locks; each service stays autonomous |
-| Observability | Metrics (Prometheus), logs (ELK), per-service dashboards | Root-causing latency across service and AI-worker boundaries |
-
----
-
 ## 🏗 System Architecture — Distributed Event Processing Platform
 
 A deeper reference architecture reflecting the backend platforms I build day-to-day: request path, async event backbone, storage-per-service, and full observability.
@@ -193,39 +128,6 @@ flowchart TB
 | Failure handling | Dead-letter queues + retry topics | Poison messages don't block partition consumers |
 | Consistency | Eventual consistency via event choreography, sagas for multi-step transactions | Avoids distributed locks; each service stays autonomous |
 | Observability | Metrics (Prometheus), logs (ELK), traces (OTel) per service | Root-causing latency across service boundaries |
-
----
-
-## ☁️ Cloud-Native Deployment Architecture
-
-How the platforms above get deployed and scaled in production.
-
-```mermaid
-flowchart LR
-    User --> CloudFront[CloudFront CDN]
-    CloudFront --> ALB[Application Load Balancer]
-    ALB --> K8S[Kubernetes Cluster — EKS]
-
-    subgraph K8S_Internal["Inside the Cluster"]
-        HPA[Horizontal Pod Autoscaler]
-        ServiceA[Spring Boot Service A]
-        ServiceB[Spring Boot Service B]
-        ServiceC[Kafka Consumer Pods]
-        HPA -.scales.-> ServiceA
-        HPA -.scales.-> ServiceB
-        HPA -.scales.-> ServiceC
-    end
-
-    K8S --> Kafka[(MSK / Apache Kafka)]
-    K8S --> RDS[(AWS RDS — Multi-AZ)]
-    K8S --> Elasticache[(Elasticache Redis)]
-
-    K8S --> Prometheus --> Grafana
-    K8S --> Secrets[AWS Secrets Manager]
-    K8S --> IAM[IAM Roles for Service Accounts]
-```
-
-**Infra notes:** GitOps-style deploys, HPA driven by custom Kafka-consumer-lag metrics rather than just CPU, and IRSA (IAM Roles for Service Accounts) for least-privilege pod-level AWS access.
 
 ---
 
@@ -359,3 +261,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 -->
+
