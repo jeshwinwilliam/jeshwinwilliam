@@ -119,6 +119,116 @@ flowchart TB
 
 ---
 
+## 🏗 System Architecture — Distributed Event Processing Platform
+
+A deeper reference architecture reflecting the backend platforms I build day-to-day: request path, async event backbone, storage-per-service, and full observability.
+
+```mermaid
+flowchart TB
+    Client[Client Applications]
+
+    subgraph Edge["Edge Layer"]
+        LB[Load Balancer]
+        APIGW[API Gateway<br/>Rate Limiting · AuthN]
+    end
+
+    subgraph Services["Service Layer"]
+        Auth[Auth Service]
+        Order[Order Service]
+        Payment[Payment Service]
+        Inventory[Inventory Service]
+        Notification[Notification Service]
+    end
+
+    subgraph Messaging["Event Backbone"]
+        Kafka[(Apache Kafka<br/>Partitioned Topics)]
+        DLQ[(Dead Letter Queue)]
+    end
+
+    subgraph Data["Storage — Database per Service"]
+        PG[(PostgreSQL<br/>Orders / Payments)]
+        Redis[(Redis<br/>Session & Cache)]
+        Cassandra[(Cassandra<br/>Inventory — high write)]
+    end
+
+    subgraph Observability["Observability Stack"]
+        Prometheus[Prometheus]
+        Grafana[Grafana]
+        ELK[ELK Stack]
+        Tracing[Distributed Tracing<br/>OpenTelemetry]
+    end
+
+    Client --> LB --> APIGW
+
+    APIGW --> Auth
+    APIGW --> Order
+    APIGW --> Payment
+    APIGW --> Inventory
+
+    Order -- OrderCreated --> Kafka
+    Payment -- PaymentProcessed --> Kafka
+    Inventory -- StockReserved --> Kafka
+    Kafka -- consume --> Notification
+    Kafka -- consume --> Inventory
+    Kafka -- consume --> Payment
+    Kafka -. failed events .-> DLQ
+
+    Auth --> Redis
+    Order --> PG
+    Payment --> PG
+    Inventory --> Cassandra
+
+    Auth & Order & Payment & Inventory --> Prometheus
+    Auth & Order & Payment & Inventory --> ELK
+    Auth & Order & Payment & Inventory --> Tracing
+    Prometheus --> Grafana
+```
+
+**Design decisions worth calling out:**
+
+| Concern | Approach | Why |
+|---|---|---|
+| Service coupling | Kafka as async backbone instead of sync REST chains | Decouples producers/consumers, absorbs traffic spikes, enables replay |
+| Data ownership | Database-per-service (PostgreSQL, Cassandra, Redis) | Avoids shared-schema coupling; each store matches its access pattern |
+| Failure handling | Dead-letter queues + retry topics | Poison messages don't block partition consumers |
+| Consistency | Eventual consistency via event choreography, sagas for multi-step transactions | Avoids distributed locks; each service stays autonomous |
+| Observability | Metrics (Prometheus), logs (ELK), traces (OTel) per service | Root-causing latency across service boundaries |
+
+---
+
+## ☁️ Cloud-Native Deployment Architecture
+
+How the platforms above get deployed and scaled in production.
+
+```mermaid
+flowchart LR
+    User --> CloudFront[CloudFront CDN]
+    CloudFront --> ALB[Application Load Balancer]
+    ALB --> K8S[Kubernetes Cluster — EKS]
+
+    subgraph K8S_Internal["Inside the Cluster"]
+        HPA[Horizontal Pod Autoscaler]
+        ServiceA[Spring Boot Service A]
+        ServiceB[Spring Boot Service B]
+        ServiceC[Kafka Consumer Pods]
+        HPA -.scales.-> ServiceA
+        HPA -.scales.-> ServiceB
+        HPA -.scales.-> ServiceC
+    end
+
+    K8S --> Kafka[(MSK / Apache Kafka)]
+    K8S --> RDS[(AWS RDS — Multi-AZ)]
+    K8S --> Elasticache[(Elasticache Redis)]
+
+    K8S --> Prometheus --> Grafana
+    K8S --> Secrets[AWS Secrets Manager]
+    K8S --> IAM[IAM Roles for Service Accounts]
+```
+
+**Infra notes:** GitOps-style deploys, HPA driven by custom Kafka-consumer-lag metrics rather than just CPU, and IRSA (IAM Roles for Service Accounts) for least-privilege pod-level AWS access.
+
+---
+
 ## 💼 Experience
 
 **Software Engineer — State Street** *(Jan 2026 – Present)*
@@ -249,4 +359,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 -->
-
