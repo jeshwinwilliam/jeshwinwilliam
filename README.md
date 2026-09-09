@@ -35,6 +35,8 @@ Software Engineer with **4+ years** of experience across **distributed systems, 
 
 **AI Platforms** — Python · workflow orchestration · AI-assisted review systems · platform integration · evaluation-minded tooling
 
+
+
 **Cloud, Data & Operations** — AWS · GCP · Docker · Kubernetes · PostgreSQL · Oracle · Redis · Prometheus · Grafana · ELK · CI/CD
 
 <p align="left">
